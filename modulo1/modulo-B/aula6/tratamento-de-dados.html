@@ -1,0 +1,445 @@
+<!--
+Vamos construir um exemplo simples e explicar passo a passo:
+
+// 1. Solicita o nome do usuário e armazena na variável 'nome'
+let nome = prompt("Qual é o seu nome?");
+
+// 2. Exibe uma mensagem de boas-vindas usando a variável 'nome'
+window.alert("Bem vindo " + nome);
+
+Explicação
+
+1. Prompt e Armazenamento em Variável:
+
+A função prompt("Qual é o seu nome?") abre uma caixa de diálogo no navegador para que o usuário digite seu nome.
+
+O valor digitado pelo usuário é retornado pela função e, em seguida, é armazenado na variável nome.
+
+Essa variável agora guarda o dado que o usuário inseriu.
+
+
+
+2. Concatenando Strings com Variáveis:
+
+No comando window.alert("Bem vindo " + nome);, usamos o operador + para concatenar (juntar) duas partes:
+
+A string "Bem vindo "
+
+E o conteúdo da variável nome.
+
+
+A operação de concatenação junta as duas partes em uma única mensagem. Por exemplo, se o usuário digitar "Ana", o alerta exibirá:
+
+Bem vindo Ana
+
+
+
+3. Erro Comum – Colocar o Nome da Variável Entre Aspas:
+
+Se você escrever window.alert("Bem vindo " + "nome");, o que acontece é o seguinte:
+
+"nome" é uma string literal, ou seja, o texto "nome" mesmo.
+
+Assim, o alerta exibirá:
+
+Bem vindo nome
+
+Nesse caso, a variável nome não está sendo usada; ao colocar o nome da variável entre aspas, você está dizendo ao JavaScript para usar exatamente aquele texto, e não o valor que foi armazenado na variável.
+
+
+
+
+
+Resumindo
+
+Prompt: Usa-se para solicitar dados ao usuário.
+
+Armazenamento em Variável: Guarda o valor digitado pelo usuário para ser usado posteriormente.
+
+Concatenação: Junta strings e variáveis usando o operador +.
+
+Atenção com as Aspas:
+
+Colocar o nome da variável sem aspas faz com que o JavaScript use o valor armazenado.
+
+Colocar o nome da variável entre aspas fará com que ele seja tratado como texto literal.
+
+
+
++ sendo adição e contenação:
+o + pode ser usado pra adição e concetenação e o proprio javascript se confunde com isso.
+forma de força adição e concetenação:
+
+- se for number + number será adição
+- se for string + string será concetenação
+
+- no caso do prompet. se usar ele pra fazer adição não vai funcionar pois o proprio
+comando é uma string
+
+
+convençoes de tipos, string para number:
+
+1: a primeira forma é usando Number.parseInt(n):
+irá fazer a comverção de um numero para um numero inteiro
+
+2> segunda forma é usando o Number.parseFloat(n):
+esse ja seria um numero mais real, numero com virgula.
+o float permite ter virgula, no caso do float são ponto no lugar da virgula,
+ex: 5.5
+e esses ponto do 5.5 e chamado de ponto flutuante
+
+ponto importantes:
+- pra evitar erros, vale lembrar que o I de inteiro e Maiusculo e o F de float tambem é
+- parse siginifica conveter, parciar
+
+Exemplo:
+ let n1 = Number.parseFloat(window.prompt ('digite um numero'))
+      let n2 = Number.parseFloat(window.prompt ('digite outro numero'))
+      let n3 = n1 + n2 
+      window,alert("O resultado da soma é " + n3)
+
+forma de evitar possiveis bugs:
+- todo o prompet precisa estar entre parentese 
+- o prompet precisa está logo em seguida do number, sem espeço igual como no exemplo
+
+forma de simplificar a identificação de tipo do number:
+
+atualmente, tem uma forma de poder usar os dois tipos sem especificar.
+usando apenas number no lugar de forçar um tipo com o parse, o javascript
+vai se virar pra tentar descobrir qual tipo de dados number foi utilizado
+e irá trabalhar com os dois tipos.
+
+exemplo: 
+   let n1 = Number(window.prompt ('digite um numero'))
+      let n2 = Number(window.prompt ('digite outro numero'))
+      let n3 = n1 + n2 
+      window,alert("O resultado da soma é " + n3)
+
+
+
+
+ converções de tipos, numeros para string:     
+existem duas maneiras, e são elas:
+- string(n): n é o valor que será convetido
+- n.tostring(): aqui eu coloco oque eu quero converter.tostring()
+
+exemplos das duas formas:
+
+exemplo1:
+ let n1 = Number(window.prompt ('digite um numero'))
+      let n2 = Number(window.prompt ('digite outro numero'))
+      let s = n1 + n2 
+      window,alert("O resultado da soma é " + String(s) )
+
+exemplo2:      
+  let n1 = Number(window.prompt ('digite um numero'))
+      let n2 = Number(window.prompt ('digite outro numero'))
+      let s = n1 + n2 
+      window,alert("O resultado da soma é " + s.toString() )
+ 
+      
+formatação de string:
+
+1. Concatenação Simples (+)
+A maneira mais básica de formatar strings é concatenando com o operador +:
+
+ex:
+let nome = "Mikael";
+let idade = 25;
+console.log("Meu nome é " + nome + " e eu tenho " + idade + " anos.");
+
+2. Template Literals (crase ...) ✅ (Recomendado)
+Os template literals permitem interpolação de variáveis e expressões dentro de uma string usando ${}.
+
+ex:
+let nome = "Mikael";
+let idade = 25;
+console.log(Meu nome é ${nome} e eu tenho ${idade} anos.);
+
+evitar erros:
+
+- todo template string só funcionam com crases
+ex: window.alert(´A soma dos valores de ${n1} e ${n2} é igual  ${s}´)
+- o cifrão seguidos de chaves se chama placeholder, e eu preciso colocar 
+o nome da variavel dentro de chaves
+
+metodos e propriedades adicionais de string:
+1: Propriedade (length)
+s.length: É uma propriedade porque não precisa de parênteses.
+Ela retorna o número de caracteres da string.
+
+ex:
+var s = "JavaScript";
+console.log(s.length); // 10
+
+
+2:Métodos (toUpperCase() e toLowerCase()) : 
+
+- s.toUpperCase(): Método que transforma a string em maiúsculas.
+
+- s.toLowerCase(): Método que transforma a string em minúsculas.
+
+
+Resumindo:
+
+.length é uma propriedade (sem parênteses).
+
+.toUpperCase() e .toLowerCase() são métodos (com parênteses).
+
+
+
+document.write() - Método do objeto document :
+O document.write() é um método do objeto document no JavaScript,
+usado para escrever conteúdo diretamente no HTML da página.
+Ele insere o conteúdo no momento do carregamento, mas se chamado
+após a renderização completa, substitui todo o conteúdo existente,
+apagando a página. Por isso, seu uso é desencorajado em aplicações 
+modernas, sendo recomendado o uso de técnicas como innerHTML ou manipulação 
+do DOM para atualizar o conteúdo de forma dinâmica e segura. ele tambem
+permite tags html no texto escrito entre parenteses e seu uso é entre crase
+
+Exemplo:
+  let nome = window.prompt("Qual é o seu nome?")
+    document.write(` Seu nome tem ${nome.length} letras`)
+
+
+
+
+Formatação de Números em JavaScript - Resumo e Boas Práticas
+A formatação de números é o processo de converter valores numéricos
+para strings que sigam um padrão específico – seja para exibição com 
+um número fixo de casas decimais, com precisão definida ou até mesmo
+seguindo convenções locais (como o uso de separadores de milhar e 
+símbolos de moeda).
+
+---
+
+2. toFixed(n)
+
+O que faz:
+Formata o número para ter exatamente n casas decimais e retorna uma string.
+
+Exemplo:
+
+let preco = 10.5;
+console.log(preco.toFixed(2)); // "10.50"
+
+Cuidados:
+
+Retorna uma string, não um número.
+
+Use quando precisar exibir valores monetários ou outros números decimais com precisão fixa.
+
+
+
+
+---
+
+3. toPrecision(n)
+
+O que faz:
+Ajusta o número para que ele tenha n dígitos significativos no total, arredondando quando necessário.
+
+Exemplo:
+
+let valor = 123.456;
+console.log(valor.toPrecision(5)); // "123.46"
+
+Cuidados:
+
+Pode alterar a forma como o número é exibido (por exemplo, usando notação científica para valores muito pequenos ou grandes).
+
+
+
+
+---
+
+4. Intl.NumberFormat
+
+O que faz:
+Permite formatar números de forma avançada e de acordo com a localidade, incluindo a exibição como moeda, porcentagem ou apenas com separadores de milhar.
+
+Exemplos:
+
+Moeda:
+
+let preco = 1500.5;
+let formatado = new Intl.NumberFormat("pt-BR", { 
+    style: "currency", 
+    currency: "BRL" 
+}).format(preco);
+console.log(formatado); // "R$ 1.500,50"
+
+Número com separadores:
+
+let numGrande = 1234567.89;
+console.log(new Intl.NumberFormat("pt-BR").format(numGrande)); // "1.234.567,89"
+
+Cuidados:
+
+Esse método não altera o valor original, apenas formata sua exibição.
+
+Escolha o locale e as opções de formatação de acordo com a sua necessidade.
+
+
+
+
+---
+
+Dicas Gerais e Boas Práticas
+
+Conversão e Cálculos:
+Lembre que métodos como toFixed() e toPrecision() retornam strings. Se for necessário realizar cálculos com esses valores, converta-os de volta para números (por exemplo, usando parseFloat()).
+
+Verificação de Valores:
+Evite chamar métodos de formatação em valores null ou undefined para prevenir erros em tempo de execução.
+
+Escolha do Método:
+Utilize Intl.NumberFormat quando precisar de formatação localizada (moeda, porcentagem, etc.) e métodos como toFixed() ou toPrecision() para ajustes rápidos de casas decimais ou precisão.
+
+
+
+
+
+
+
+
+Formatação de Números com Vírgula:
+
+O comando que o professor mostrou — n1.toFixed(2).replace('.', ',') 
+combina dois métodos para formatar números de forma que, em vez de 
+usarem o ponto como separador decimal, usem a vírgula. 
+
+1. Oque faz .replace('.', ',') :
+O que faz: Substitui o primeiro caractere encontrado, que no caso é 
+o ponto ('.'), por uma vírgula (',').
+
+Exemplo:
+let valorFormatado = "10.50".replace('.', ',');
+console.log(valorFormatado); // "10,50"
+
+Observação: Como o resultado de toFixed(2) sempre terá 
+apenas um ponto (para separar os decimais), essa substituição 
+funciona perfeitamente para essa finalidade.
+
+
+Resumo Completo
+
+Objetivo:
+O comando n1.toFixed(2).replace('.', ',') formata um número para exibir duas 
+casas decimais e substitui o ponto decimal por uma vírgula, adaptando a exibição
+conforme as convenções de formatação numérica em alguns países (como o Brasil).
+
+Quando Usar:
+Utilize essa abordagem para exibir números em interfaces onde se espera a 
+vírgula como separador decimal, por exemplo, ao mostrar preços ou valores monetários.
+
+Exemplo Completo:
+let n1 = 10.5;
+let formatado = n1.toFixed(2).replace('.', ',');
+console.log(formatado); // "10,50"
+
+
+
+
+
+O que é o toLocaleString("pt-BR") em JavaScript?
+
+O método .toLocaleString() é usado para formatar números e 
+datas de acordo com a localidade desejada. Quando utilizamos 
+"pt-BR", estamos especificando o formato brasileiro, que usa a 
+vírgula como separador decimal e o ponto como separador de milhar.
+
+
+---
+
+1. Como Funciona com Números:
+
+O método converte um número para uma string formatada seguindo 
+o padrão da localidade passada como argumento.
+
+Exemplo de Formatação Numérica:
+let numero = 1234567.89;
+console.log(numero.toLocaleString("pt-BR")); // "1.234.567,89"
+
+explicação do que acontece?:
+O ponto decimal (.) é trocado por uma vírgula (,) no formato brasileiro.
+Os milhares são separados por um ponto (.).
+
+
+
+---
+
+2. Formatando Moedas:
+Podemos passar opções extras para .toLocaleString(), como style: "currency"
+para formatar o número como uma moeda.
+
+Exemplo de Formatação Monetária:
+let preco = 1500.5;
+console.log(preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })); 
+// "R$ 1.500,50"
+
+explicação do que acontece?
+style: "currency" indica que queremos formatar como moeda.
+currency: "BRL" define a moeda para Real (R$).
+O resultado será um valor corretamente formatado para o Brasil.
+
+
+---
+
+3. Formatando Datas com toLocaleString()
+Esse método também pode formatar datas e horários conforme a localidade especificada.
+
+Exemplo de Formatação de Data e Hora
+let data = new Date();
+console.log(data.toLocaleString("pt-BR")); 
+// Exemplo de saída: "09/03/2025 16:30:45"
+
+explicação do que acontece?
+O formato segue o padrão brasileiro: dia/mês/ano horas:minutos:segundos.
+
+
+
+---
+
+
+Resumo
+✔ toLocaleString("pt-BR") formata números e datas automaticamente para o padrão brasileiro.
+✔ Pode ser usado para moedas, números com separadores de milhar e datas formatadas.
+✔ Evita a necessidade de substituir manualmente o ponto (.) pela vírgula (,).
+d
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOOOOOOOOLLLCUUUUU</title>
+    <style>
+        body{
+            background-color: aqua;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Olá Mundo</h1>
+    <p>Já me livrei da maldição</p>
+
+    <script>
+     
+    let nome = window.prompt("Qual é o seu nome?")
+    document.write(` Seu nome tem ${nome.length} letras`)
+
+     /*
+     let n1 = Number(window.prompt ('digite um numero'))
+      let n2 = Number(window.prompt ('digite outro numero'))
+      let s = n1 + n2 
+      window,alert("O resultado da soma é " + String(s))
+      */
+    </script>
+</body>
+</html>

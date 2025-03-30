@@ -1,0 +1,289 @@
+<!--
+
+Operadores em JavaScript
+
+Hoje, vamos aprender sobre operadores relacionais, lógicos, 
+das (curto-circuito) e ternário de forma bem clara e didática.
+
+
+---
+
+1. Operadores Relacionais
+
+Os operadores relacionais servem para comparar valores e sempre retornam true (verdadeiro) ou false (falso).
+
+dica sobre sinal de maior ou menor:
+oque tiver com a boquinha aperta e o maiir, 8> (maior que 8)
+
+> maior que
+ex: 5 > 3 = true
+< menor que
+ex: 7 < 3 = fçase
+>= maior ou igual 
+ex: 8 >= 8 = true
+<= menor ou igual
+ex: 9 <= 7 = false
+== igual a
+ex: 5 == 5 = true
+!= não igual
+ex: 4 != 4 = false
+
+Diferença entre == e === :
+está relacionado a identidade
+
+== compara apenas o valor (não importa o tipo).
+
+=== compara o valor e o tipo de dado.
+
+
+Exemplo:
+
+console.log(5 == '5');  // true  (compara só o valor)
+console.log(5 === '5'); // false (compara valor e tipo)
+
+---
+
+2. Operadores Lógicos
+Os operadores lógicos combinam expressões e retornam true ou false
+e são 3, !, &&, ||
+
+- ! quer dizer negação, não
+ele é um operador unario (ou seja, so tem uma expressão)
+
+valores logicos:
+nega o valor
+
+! true = false
+! false = true
+
+Exemplo com ! (Negação lógica)
+
+let estáChovendo = true;
+
+if (!estáChovendo) {
+    console.log("Vou sair.");
+} else {
+    console.log("Vou ficar em casa.");
+}
+
+✅ O ! inverte true para false, então o código funciona como "Se não estiver chovendo, eu saio".
+
+
+
+- && siginifica conjunção, ou e
+é um operador biario (ou seja, dois valores logicos)
+
+valores ligico:
+todas precisam ser verdadeira
+
+true && true = true
+false && true = false
+true && false = true
+false && false = false
+
+
+Exemplo com && (E lógico)
+
+let idade = 20;
+let temCNH = true;
+
+if (idade >= 18 && temCNH) {
+    console.log("Pode dirigir!");
+} else {
+    console.log("Não pode dirigir.");
+}
+
+✅ Só poderá dirigir se as duas condições forem verdadeiras.
+
+
+- !! siginifica dsjunção, e ou
+é um operador binario ( ou seja, dois valores logicos)
+
+valores logicos:
+basta apenas um pra ser verdadeiro
+
+true !! true = true
+false !! true = true
+true !! false = true
+false !! false = false
+
+Exemplo com || (Ou lógico)
+
+let temDesconto = false;
+let éClienteVIP = true;
+
+if (temDesconto || éClienteVIP) {
+    console.log("Você tem um desconto!");
+} else {
+    console.log("Sem desconto.");
+}
+
+✅ Se pelo menos uma condição for verdadeira, ele entra no if.
+
+Exemplo com ! (Negação lógica)
+
+let estáChovendo = true;
+
+if (!estáChovendo) {
+    console.log("Vou sair.");
+} else {
+    console.log("Vou ficar em casa.");
+}
+
+✅ O ! inverte true para false, então o código funciona como "Se não estiver chovendo, eu saio".
+
+
+
+ordem de opeadores relacionais e aritimeticos e logicos:
+1: aritimetico: ele faz primeiro
+2: relacionais: ele vem depois
+3: logicos: ele vem por utimo
+
+ordem dos operadores ligicos:
+primeiro o não, depois o e e depois o ou
+
+---
+
+
+4. Operador Ternário
+
+O operador ternário é composto por esses dois simbolos ? :,
+ele se chama ternario por que ele tem 3 blocos operante
+
+valores dos blocos e os operando: 
+teste ? true : false
+
+- teste = e os valores logicos, se vai ser tue ou false
+- true = e oque vai aconter se o resultado do teste for true
+- false = e oque vai aconter se o resultado do teste for false
+
+ex: media >=7 ? "aprovado" : "reprovado"
+
+é uma forma curta de escrever um if simples.
+
+Sintaxe:
+
+condição ? valor_se_verdadeiro : valor_se_falso;
+
+Exemplo 1 – Comum
+
+let idade = 20;
+let status = idade >= 18 ? "Maior de idade" : "Menor de idade";
+console.log(status); // "Maior de idade"
+
+✅ Se idade >= 18, retorna "Maior de idade", senão, "Menor de idade".
+
+Exemplo 2 – Aninhado
+
+let nota = 7;
+let resultado = nota >= 7 ? "Aprovado" : nota >= 5 ? "Recuperação" : "Reprovado";
+console.log(resultado);
+
+✅ Se nota >= 7, retorna "Aprovado".
+✅ Se nota < 7 mas >= 5, retorna "Recuperação".
+✅ Se nota < 5, retorna "Reprovado".
+
+
+---
+
+Resumo
+
+1. Operadores Relacionais
+
+> (maior que), < (menor que), >= (maior ou igual), <= (menor ou igual)
+
+== (igual – compara valor), === (estritamente igual – compara valor e tipo)
+
+!= (diferente – compara valor), !== (estritamente diferente – compara valor e tipo)
+
+
+2. Operadores Lógicos
+
+&& (E) – Todas as condições devem ser verdadeiras.
+
+|| (OU) – Basta uma condição ser verdadeira.
+
+! (Negação) – Inverte true e false.
+
+
+3. Operadores das (Curto-Circuito)
+
+&& retorna o primeiro false, senão retorna o último valor.
+
+|| retorna o primeiro true, senão retorna o último valor.
+
+
+4. Operador Ternário
+
+condição ? valor_se_verdadeiro : valor_se_falso;
+
+Exemplo: idade >= 18 ? "Maior de idade" : "Menor de idade";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Espero poder ajudar alguém
+
+&& = Lido como "E", somente retorna True caso as duas condições sejam verdadeiras (no caso iguais), caso contrário retornará False.
+
+|| = Lido como "Ou", retorna True caso uma das condições sejam verdadeiras, apenas retornará False, caso ambas sejam falsas.
+
+A ordem dos operadores lógicos em uma expressão se dá
+
+1- !
+2- &&
+3- ||
+
+Operadores Ternários ( ? : )
+
+Eles tem três operandos, podem ser lidos como:
+
+? = "Se sim.." Caso a expressão seja verdadeira.
+: = "Se não..." Caso a expressão seja falsa.
+
+Basicamente uma estrutura condicional como a do python ( If, else e elif).
+
+
+
+-->

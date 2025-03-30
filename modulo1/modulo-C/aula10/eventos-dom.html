@@ -1,0 +1,496 @@
+<!--
+
+Eventos no DOM em JavaScript
+
+Os eventos no DOM permitem que os elementos da página respondam a 
+interações do usuário, como cliques, digitação e movimento do mouse.
+
+1. O que é um evento no DOM?
+Um evento é qualquer ação que acontece no navegador, como:
+
+✅ Um usuário clicando em um botão.
+✅ Um campo de texto recebendo entrada.
+✅ A página sendo carregada.
+
+O JavaScript pode detectar e responder a esses eventos.
+
+
+---
+
+2. Maneiras de adicionar eventos
+
+1. Atributo HTML (onclick) – Não recomendado
+
+Código HTML:
+<div id="area" onclick="clicar()">Interaja</div>
+
+
+Código JavaScript:
+function clicar() {
+  var a = document.getElementById("area");
+  a.innerText = "Clicou";
+}
+
+✅ Explicação do código:
+
+No HTML, usamos onclick="clicar()", que chama a função clicar() quando a <div> for clicada.
+
+No JavaScript, a função clicar() pega o elemento <div> pelo id="area" e altera seu texto para "Clicou".
+
+❌ Por que não é recomendado?
+Mistura HTML e JavaScript, o que dificulta a manutenção do código.
+
+
+---
+
+2. Propriedade do elemento (element.onclick)
+
+Essa forma define um evento diretamente no JavaScript.
+
+Código HTML:
+
+<button id="meuBotao">Clique aqui</button>
+
+Código JavaScript:
+
+let botao = document.getElementById("meuBotao");
+
+botao.onclick = function () {
+  alert("Botão clicado!");
+};
+
+✅ Explicação do código:
+
+document.getElementById("meuBotao") seleciona o botão pelo id.
+
+botao.onclick = function () { ... } define a função que será executada quando o botão for clicado.
+
+
+⚠️ Limitação:
+Só permite um evento por vez. Se você atribuir outro onclick, ele substituirá o anterior.
+
+
+---
+
+3. addEventListener() (Método Recomendado)
+
+Esse método permite adicionar vários eventos ao mesmo elemento.
+
+Código HTML:
+<button id="meuBotao">Clique aqui</button>
+
+
+Código JavaScript:
+let botao = document.getElementById("meuBotao");
+
+botao.addEventListener("click", function () {
+  alert("Botão clicado!");
+});
+
+✅ Explicação da sintaxe:
+
+document.getElementById("meuBotao") pega o botão pelo id.
+
+.addEventListener("click", function() { ... }) adiciona um evento ao botão.
+
+"click" → Tipo do evento (pode ser "mouseover", "keydown", etc.).
+
+function() { ... } → Função que será executada quando o evento ocorrer.
+
+
+
+✅ Vantagens do addEventListener():
+✔️ Permite adicionar vários eventos ao mesmo elemento.
+✔️ Pode ser usado para remover eventos posteriormente.
+
+
+---
+
+3. Tipos comuns de eventos
+
+1. Evento de Clique (click)
+
+Código HTML:
+<button id="botao">Clique aqui</button>
+
+
+Código JavaScript:
+document.getElementById("botao").addEventListener("click", function () {
+  alert("Você clicou no botão!");
+});
+
+
+---
+
+2. Eventos de Mouse
+
+Exemplo (mouseover)
+
+Código HTML:
+<div id="caixa" style="width: 100px; height: 100px; background: blue;"></div>
+
+
+Código JavaScript:
+let caixa = document.getElementById("caixa");
+
+caixa.addEventListener("mouseover", function () {
+  caixa.style.backgroundColor = "red";
+});
+
+
+---
+
+Exemplo (mouseout)
+
+Código HTML:
+<div id="caixa" style="width: 100px; height: 100px; background: red;"></div>
+
+
+Código JavaScript:
+caixa.addEventListener("mouseout", function () {
+  caixa.style.backgroundColor = "blue";
+});
+
+
+---
+
+Exemplo (mouseenter)
+
+Código HTML:
+<div id="caixa" style="width: 100px; height: 100px; background: blue;"></div>
+
+
+Código JavaScript:
+caixa.addEventListener("mouseenter", function () {
+  console.log("Mouse entrou na área!");
+});
+
+
+---
+
+Exemplo (mouseleave)
+
+Código HTML:
+<div id="caixa" style="width: 100px; height: 100px; background: blue;"></div>
+
+
+Código JavaScript:
+caixa.addEventListener("mouseleave", function () {
+  console.log("Mouse saiu da área!");
+});
+
+
+---
+
+Exemplo (mousemove)
+
+Código HTML:
+<div id="caixa" style="width: 100px; height: 100px; background: blue;"></div>
+
+
+Código JavaScript:
+caixa.addEventListener("mousemove", function () {
+  console.log("Mouse está se movendo dentro da área!");
+});
+
+
+---
+
+Exemplo (mousedown)
+
+Código HTML:
+<div id="caixa" style="width: 100px; height: 100px; background: blue;"></div>
+
+
+Código JavaScript:
+caixa.addEventListener("mousedown", function () {
+  console.log("Botão do mouse pressionado!");
+});
+
+
+---
+
+Exemplo (mouseup)
+
+Código HTML:
+<div id="caixa" style="width: 100px; height: 100px; background: blue;"></div>
+
+
+Código JavaScript:
+caixa.addEventListener("mouseup", function () {
+  console.log("Botão do mouse solto!");
+});
+
+
+---
+
+✅ Resumo dos eventos de mouse:
+🔹 mouseover: Quando o mouse entra no elemento.
+🔹 mouseout: Quando o mouse sai do elemento.
+🔹 mouseenter: Entra no elemento (sem considerar elementos filhos).
+🔹 mouseleave: Sai do elemento (sem considerar elementos filhos).
+🔹 mousemove: Quando o mouse se move dentro do elemento.
+🔹 mousedown: Quando um botão do mouse é pressionado.
+🔹 mouseup: Quando o botão do mouse é solto.
+
+
+
+---
+
+3. Eventos de Teclado (keydown e keyup)
+
+Exemplo (keydown – Tecla Pressionada)
+
+Código HTML:
+<input type="text" id="campoTexto" placeholder="Digite algo">
+
+
+Lado JavaScript:
+document.addEventListener("keydown", function (evento) {
+  console.log("Tecla pressionada:", evento.key);
+});
+
+✅ Explicação breve:
+O evento keydown é disparado quando uma tecla é pressionada.
+
+
+---
+
+Exemplo (keyup – Tecla Solta)
+
+Código HTML:
+<input type="text" id="campoTexto" placeholder="Digite algo">
+
+
+Lado JavaScript:
+document.addEventListener("keyup", function (evento) {
+  console.log("Tecla solta:", evento.key);
+});
+
+✅ Explicação breve:
+O evento keyup é disparado quando uma tecla é solta.
+
+🔹 keydown: Disparado quando a tecla é pressionada.
+🔹 keyup: Disparado quando a tecla é solta.
+
+
+
+---
+
+4. Evento de Mudança (change) – Útil para inputs
+
+Exemplo (change)
+
+Código HTML:
+<input type="text" id="meuInput" placeholder="Digite algo e pressione Enter">
+
+
+Lado JavaScript:
+function mudouValor() {
+  alert("O valor foi alterado para: " + campo.value);
+}
+
+var campo = document.getElementById("meuInput");
+campo.addEventListener("change", mudouValor);
+
+
+Explicação da sintaxe e do evento:
+
+1. Definição da função:
+
+A função mudouValor é definida com o nome que escolhemos. Esse nome 
+não é o nome do evento, mas sim o nome da função que queremos que 
+seja executada quando o evento ocorrer.
+
+Dentro da função, usamos campo.value para acessar o valor atual do 
+campo de entrada e exibimos esse valor em um alerta.
+
+2. Selecionando o elemento HTML:
+
+var campo = document.getElementById("meuInput"); seleciona o elemento 
+<input> com o id "meuInput" e o armazena na variável campo.
+
+
+3. Adicionando o evento com addEventListener():
+
+campo.addEventListener("change", mudouValor); associa o evento "change" 
+ao elemento selecionado.
+
+O primeiro argumento "change" especifica o tipo de evento: esse evento é disparado 
+quando o usuário muda o valor do campo (normalmente ao sair do campo).
+
+O segundo argumento, mudouValor, é a função que será chamada quando o evento ocorrer.
+
+
+
+
+🔹 change: Disparado quando o usuário muda o valor de um campo de entrada.
+
+Essa sintaxe garante que, sempre que o valor do input mudar, a função mudouValor será 
+executada, exibindo o novo valor em um alerta.
+
+
+
+
+Funções em JavaScript
+
+As funções são essenciais para tratar eventos, pois 
+definem blocos de código que só são executados quando o evento ocorre.
+
+1. O que é uma Função?
+
+Uma função é um conjunto de instruções que executa uma tarefa específica.
+
+function saudacao() {
+  console.log("Olá, bem-vindo!");
+}
+
+Essa função não será executada automaticamente. Para usá-la, você precisa chamá-la:
+
+saudacao(); // Exibe: Olá, bem-vindo!
+
+
+---
+
+2. Funções e Eventos
+
+No contexto de eventos, as funções só são executadas quando o evento acontece.
+
+function handleClick() {
+  console.log("Botão foi clicado!");
+}
+
+let botao = document.getElementById("botao");
+botao.addEventListener("click", handleClick);
+
+
+---
+
+3. Função Anônima
+
+Uma função anônima não tem nome e pode ser usada diretamente dentro de addEventListener().
+
+botao.addEventListener("click", function() {
+  console.log("Botão clicado com função anônima!");
+});
+
+
+---
+
+4. Sintaxe e Delimitação de Blocos
+
+O bloco de código de uma função sempre deve estar entre { }.
+
+Para definir uma função, usamos function nomeDaFuncao().
+
+
+function minhaFuncao() {
+  console.log("Executando minha função!");
+}
+
+Para executar a função, chamamos ela pelo nome:
+
+
+minhaFuncao();
+
+
+---
+
+5. Uso de Parâmetros
+
+Os parâmetros permitem que uma função receba valores na sua chamada.
+
+function saudacao(nome) {
+  console.log("Olá, " + nome + "!");
+}
+
+saudacao("Maria"); // Exibe: Olá, Maria!
+
+Parâmetros em Eventos
+
+Eventos podem passar um parâmetro especial chamado event, que contém detalhes 
+sobre o evento ocorrido.
+
+botao.addEventListener("click", function(event) {
+  console.log("Você clicou em:", event.target);
+});
+
+
+---
+
+Resumo
+
+✅ Funções agrupam um conjunto de instruções.
+✅ Blocos são delimitados por { }.
+✅ Eventos chamam funções quando ocorrem.
+✅ Parâmetros permitem que a função receba valores.
+
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      /*  div{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            color: white;
+        }
+       */
+
+    </style>
+</head>
+<body>
+   <!-- <div id="area" >
+        interaja..
+    </div>
+
+    <script>
+        var a = window.document.getElementById('area')
+        a.addEventListener('click', clicar)
+        a.addEventListener('mouseenter', entrar)
+        a.addEventListener('mouseout', sair)
+
+        function clicar(){
+            a.innerText = 'clicou!'
+            a.style.background = 'red'
+        }
+
+        function entrar() {
+            a.innerText = 'entrou!'
+        }
+
+        function sair(){
+            a.innerText = 'saiu!'
+        }
+    </script>
+    -->
+
+
+
+    <h1>somando valores</h1>
+    <input type="number" name="txtn1" id="txtn1"> +
+    <input type="number" name="txtn2" id="txtn2">
+    <input type="button" value="somar" onclick="somar()">
+    <div id="res"></div>
+
+
+    <script>
+        function somar(){
+            var tn1 = window.document.getElementById('txtn1')
+            var tn2 = window.document.querySelector('input#txtn2')
+            var res = window.document.getElementById('res')
+            var n1 = Number(tn1.value)
+            var n2 = Number(tn2.value)
+            var s = n1 + n2
+            res.innerText = `a soma de ${n1} e ${n2} é igual  a ${s}`
+        }
+    </script>
+</body>
+</html>

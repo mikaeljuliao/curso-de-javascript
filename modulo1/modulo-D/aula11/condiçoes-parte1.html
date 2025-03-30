@@ -1,0 +1,214 @@
+<!--
+Sequência em JavaScript
+
+Antes de falarmos sobre condições, é importante entender o conceito de sequência em programação.
+
+A sequência é a estrutura mais básica de um código, onde as instruções são executadas de 
+cima para baixo, na ordem em que aparecem. 
+
+Exemplo de sequência
+
+console.log("Passo 1");
+console.log("Passo 2");
+console.log("Passo 3");
+
+✅ Explicação:
+Aqui, os comandos são executados um após o outro, exatamente nessa ordem:
+1️⃣ Primeiro, exibe "Passo 1".
+2️⃣ Depois, exibe "Passo 2".
+3️⃣ Por fim, exibe "Passo 3".
+
+Isso significa que, sem estruturas como condições ou laços, o código sempre seguirá essa ordem fixa.
+
+
+---
+
+
+
+
+Desvio Condicional em JavaScript:
+
+O desvio condicional é um conceito fundamental em programação que 
+permite ao código tomar decisões com base em certas condições. Em vez 
+de seguir uma sequência fixa, como vimos antes, ele pode escolher 
+caminhos diferentes dependendo de valores e regras específicas.
+
+Isso significa que nem todas as linhas do código serão sempre executadas, 
+pois algumas podem ser ignoradas dependendo da condição.
+
+
+---
+
+Tipos de Desvio Condicional
+
+Existem dois tipos principais de desvios condicionais:
+
+1️⃣ Desvio condicional simples → Só verifica uma condição e pode ou não 
+executar um bloco de código.
+2️⃣ Desvio condicional composto → Verifica mais de uma possibilidade e 
+executa um bloco diferente para cada caso.
+
+
+---
+
+1. Desvio Condicional Simples
+
+Aqui, o código verifica uma única condição. Se ela for verdadeira, 
+executa um bloco; se for falsa, simplesmente ignora o bloco e 
+continua o código normalmente.
+
+Exemplo:
+
+let temperatura = 30;
+
+if (temperatura > 25) {
+  console.log("Está calor!");
+}
+
+✅ Explicação:
+
+- O código verifica se temperatura é maior que 25.
+- Se for, ele exibe "Está calor!".
+- Se não for, simplesmente não faz nada e segue para a próxima linha do código.
+
+---
+
+2. Desvio Condicional Composto:
+
+Aqui, o código pode executar diferentes blocos dependendo do resultado da condição.
+
+Exemplo com if e else
+
+let temperatura = 20;
+
+if (temperatura > 25) {
+  console.log("Está calor!");
+} else {
+  console.log("Está frio!");
+}
+
+✅ Explicação:
+
+Se temperatura for maior que 25, exibe "Está calor!".
+
+Caso contrário (else), exibe "Está frio!".
+
+
+Ou seja, um dos blocos sempre será executado.
+
+⏩ Se temperatura = 30 → "Está calor!"
+⏩ Se temperatura = 20 → "Está frio!"
+
+---
+
+Resumo sobre Desvio Condicional
+
+🔹 O desvio condicional permite ao código tomar decisões.
+🔹 if verifica uma condição.
+🔹 else executa um bloco caso a condição seja falsa.
+🔹 else if permite testar múltiplas condições.
+🔹 O código segue de cima para baixo e executa a primeira condição verdadeira.
+
+
+
+Condições em JavaScript:
+
+Agora que entendemos a sequência, podemos falar sobre condições. Elas permitem que o 
+código tome decisões, ou seja, execute determinados blocos apenas se certas condições 
+forem atendidas.
+
+A estrutura mais comum para isso é o if (se).
+
+Exemplo básico com if
+
+let idade = 18;
+
+if (idade >= 18) {
+  console.log("Você é maior de idade.");
+}
+
+✅ Explicação:
+
+Se a variável idade for 18 ou mais, a mensagem será exibida.
+
+Se for menor que 18, nada acontece porque não há outra instrução.
+
+
+Usando else (senão)
+
+let idade = 16;
+
+if (idade >= 18) {
+  console.log("Você é maior de idade.");
+} else {
+  console.log("Você é menor de idade.");
+}
+
+✅ Explicação:
+
+Se idade for 18 ou mais, o primeiro bloco será executado.
+
+Caso contrário, o código dentro de else será executado.
+
+
+Usando else if (senão se)
+
+Podemos testar mais de uma condição com else if:
+
+let nota = 7;
+
+if (nota >= 9) {
+  console.log("Ótima nota!");
+} else if (nota >= 7) {
+  console.log("Boa nota!");
+} else {
+  console.log("Precisa melhorar.");
+}
+
+✅ Explicação:
+
+Se nota for 9 ou mais → "Ótima nota!".
+
+Se for entre 7 e 8 → "Boa nota!".
+
+Caso contrário → "Precisa melhorar.".
+
+
+Isso permite tomar decisões mais complexas.
+
+Se quiser, posso aprofundar mais ou explicar de outra forma.
+
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sistema de multas</h1>
+    Velocidade do Carro: <input type="number" name="txtvel" id="txtvel"> km/h
+    <input type="button" value="Verificar" onclick="calcular()">
+    <div id="res"></div>
+
+    <script>
+        function calcular(){
+            var txtv = window.document.querySelector('input#txtvel')
+            var res = window.document.querySelector('div#res')
+            var vel = Number(txtv.value)
+
+            res.innerHTML = <p>Sua velocidade atual é de <strong>${vel} km/h</strong></p>
+            
+            if (vel > 60) {
+                res.innerHTML += <p>Você foi <strong>Multado</strong>!</p> // Aqui estava o erro, faltava fechar o </p>
+            }    
+
+            res.innerHTML += <p>Dirija sempre com cinto de segurança!</p>
+        }
+    </script>
+</body>
+</html>
