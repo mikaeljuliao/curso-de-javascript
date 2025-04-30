@@ -1,0 +1,82 @@
+
+<!--
+ forma de criar um elemento com javascript pro html:
+ uso o elemento  createElement e dentro de () o elemento entre aspas.
+ exemplo: 
+   let item = document.createElement('option')
+ 
+ eu crie uma caixa de opçao com option  
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+         background-color: blue;
+         font-family: Arial, Helvetica, sans-serif;
+        }
+        h1{
+            color: white;
+            text-align: center;
+            font-weight: 800;
+        }
+        div{
+            margin: auto;
+            background-color: white;
+            width: 400px;
+            padding: 9px;
+        }
+        footer{
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tabuada</h1>
+    </header>
+    <section>
+        <div id="dados">
+           <p>numero: <input type="number" name="num" id="txtn">
+        <input type="button" value="gerar tabuada" onclick="tabuada()"></p>
+        </div>
+        <div id="res">
+            <select name="tabuada" id="seltab" size="10">
+               <option value="">digite um numero acima:</option>
+            </select>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Cursoemvideo</p>
+    </footer>
+
+
+    <script>
+     function tabuada(){
+        let num = document.getElementById("txtn")
+        let tab = document.getElementById("seltab")
+
+        if (num.value.length == 0){
+            window.alert("por favor, digite um numero!")
+        } else {
+            let n = Number(num.value)
+            let c = 1
+            tab.innerHTML = ''
+            while (c <= 10) {
+                let item = document.createElement('option')
+                item.text = `${n} x ${c} = ${n*c}`
+                item.value = `tab${c}`
+                tab.appendChild(item)
+                c++
+            }
+        }
+     }
+    </script>
+</body>
+</html>

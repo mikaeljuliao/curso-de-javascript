@@ -1,0 +1,98 @@
+<!--
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: blue;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header{
+         color: white;
+         text-align: center;
+        }
+        section{
+        background-color: white;
+        border-radius: 10px;
+        padding: 15px;
+        width: 500px;
+        margin: auto;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.356);
+        }
+        footer{
+        color: white;
+        text-align: center;
+        font-style: italic;
+        }
+        div{
+            text-align: center;
+            padding: 5px;
+        }
+      
+    </style>
+</head>
+<body onload="carregar()">
+    <header>
+        <h1>Hora do Dia</h1>
+    </header>
+    <section>
+       <div id="msg">
+          Aqui vai aparecer a mensagem...
+       </div>
+       <div id="foto">
+         <img id="imagem" src="imagem/pexels-fernando-b-m-3624021-31533700 (1).jpg" alt="foto-manha">
+        
+        
+       </div>
+    </section>
+    <footer>
+        <p>&copy; CursoemVideo</p>
+    </footer>
+
+
+    <script>
+      
+     function carregar() {
+        var msg = window.document.getElementById('msg')
+        var img = window.document.getElementById('imagem')
+        var date = new Date()
+        //var hora = date.getHours()
+        var hora = 20
+        msg.innerHTML = `agora são ${hora} horas`
+
+        if (hora >= 0 && hora < 12){
+            //bom dia
+        img.src = "imagem/pexels-fernando-b-m-3624021-31533700 (1).jpg"
+        document.body.style.background = '#e2cd9f'
+
+        img.style.width = "250px";
+        img.style.height = "250px";
+        img.style.borderRadius = "50%";
+        } else if (hora >=12 && hora < 18){
+            //boa tarde
+              img.src = "imagem/pexels-nihat-12231-69224.jpg"
+              document.body.style.background = '#b9846f'
+
+              img.style.width = "250px";
+              img.style.height = "250px";
+              img.style.borderRadius = "50%";
+        } else {
+            //boa noite
+              img.src = "imagem/pexels-rbrigant44-771883.jpg"
+              document.body.style.background = '#515154'
+
+              img.style.width = "250px";
+              img.style.height = "250px";
+              img.style.borderRadius = "50%";
+        }
+     }
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+
+<!--
+Como colocar emoji no JavaScript usando o código Unicode
+
+1. Acha o emoji que tu quer
+
+Vai no site Unicode Emoji List ou pesquisa no Google por:
+"unicode emoji list"
+
+Exemplo: o emoji de carinha sorrindo
+Emoji: 😀
+Código Unicode: U+1F600
+
+2. Pega só o código depois do U+
+
+Tira o U+ do início
+
+Vai ficar assim: 1F600
+
+3. Coloca no JavaScript assim:
+
+let emoji = "\u{1F600}"
+console.log("Sorria! " + emoji)
+
+
+---
+
+Dica extra: pode usar direto no HTML também
+
+<p id="res"></p>
+
+<script>
+  document.getElementById("res").innerHTML = "Feliz demais! \u{1F600}"
+</script>
+
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+         background-color: blue;
+         font-family: Arial, Helvetica, sans-serif;
+        }
+        h1{
+            color: white;
+            text-align: center;
+            font-weight: 800;
+        }
+        div{
+            margin: auto;
+            background-color: white;
+            width: 400px;
+            padding: 9px;
+        }
+        footer{
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vamos contar</h1>
+    </header>
+    <section>
+        <div id="dados">
+             <p>Inicio: <input type="number" name="inicio" id="txti"> </p>
+             <p>Fim: <input type="number" name="fim" id="txtf">  </p>
+             <p>Passo: <input type="number" name="passo" id="txtp"> </p>
+             <p><input type="button" value="contar" onclick="contarr()"></p>
+        </div>
+        <div id="res">
+        preparando a contagem..
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Cursoemvideo</p>
+    </footer>
+
+
+    <script>
+      function contarr(){
+        let ini = document.getElementById("txti")
+        let fim = document.getElementById("txtf")
+        let passo = document.getElementById("txtp")
+        let res = document.getElementById("res")
+
+        if (ini.value.length == 0 || fim.value.length == 0 || passo.value.length == 0){
+            // ini.value.length e os outros, ele verifica se o campo esta vazii
+            window.alert('[ERRO] faltam dados')
+            res.innerHTML = 'impossivel contar!'
+        } else {
+           res.innerHTML = 'contando: <br> '
+           let i = Number(ini.value) //transformei pra numero o valo da variavel ini
+           let f = Number(fim.value) //transformei pra numero o valo da variavel fim
+           let p = Number(passo.value) //transformei pra numero o valo da variavel passo
+           if (p <= 0) {
+                window.alert('passo invalido! Considerando passo 1')
+                p = 1
+           }
+           if (i < f) {
+            // contagem cresente
+            for (let c = i; c <= f; c += p) {
+            res.innerHTML += `${c} \u{1F601}`
+           }
+           } else {
+            // contagem regressiva
+            for (let c = i; c >= f; c -= p) {
+            res.innerHTML += `${c} \u{1F601}`
+           }
+           }
+        }
+      }
+    </script>
+</body>
+</html>

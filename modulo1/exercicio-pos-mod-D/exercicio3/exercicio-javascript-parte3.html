@@ -1,0 +1,286 @@
+
+<!--
+como pegar o ano atual no javascript?
+Para pegar o ano atual no JavaScript, você pode usar o 
+objeto Date e o método .getFullYear().
+
+Exemplo:
+
+const anoAtual = new Date().getFullYear();
+console.log(anoAtual);
+
+Explicação:
+
+new Date() cria um objeto com a data e hora atuais.
+
+.getFullYear() retorna o ano completo (ex: 2025).
+
+
+Se quiser exibir no HTML, pode fazer algo assim:
+
+document.getElementById("ano").textContent = new Date().getFullYear();
+
+E no HTML:
+
+<p id="ano"></p>
+
+Isso preencherá o <p> com o ano atual automaticamente.
+
+
+
+como criar imagem de forma dinamica no javascript?
+Para criar uma imagem dinamicamente no JavaScript, 
+você pode usar o método document.createElement("img"), 
+configurar seus atributos e adicioná-la ao DOM. 
+
+Exemplo:
+
+// Criar um elemento de imagem
+const imagem = document.createElement("img");
+
+// Definir o src (caminho da imagem)
+imagem.src = "https://via.placeholder.com/150"; 
+
+// Definir um texto alternativo (alt)
+imagem.alt = "Imagem dinâmica";
+
+// Ajustar largura e altura (opcional)
+imagem.width = 150;
+imagem.height = 150;
+
+// Adicionar ao corpo da página ou outro elemento
+document.body.appendChild(imagem);
+
+Explicação:
+
+1. Cria um novo elemento <img>.
+2. Define o atributo src com a URL da imagem.
+3. Configura o alt, largura e altura.
+4. Adiciona a imagem ao document.body ou outro elemento desejado.
+
+
+
+Se precisar adicionar a imagem dentro de um contêiner específico, basta trocar 
+document.body.appendChild(imagem) por algo como:
+
+document.getElementById("meuContainer").appendChild(imagem);
+
+Isso insere a imagem dentro do elemento com o ID meuContainer.
+
+
+
+
+
+
+
+
+
+
+
+
+Anotação: appendChild() no JavaScript
+
+O que é appendChild()?
+
+O método appendChild() é usado para adicionar um elemento filho dentro de outro elemento no HTML.
+
+Sintaxe:
+
+elementoPai.appendChild(elementoFilho);
+
+elementoPai: O elemento onde o filho será inserido.
+
+elementoFilho: O elemento que será adicionado.
+
+
+Por que appendChild() é necessário?
+
+Quando criamos um elemento com document.createElement(), ele existe 
+apenas na memória e não aparece na página até ser adicionado ao HTML.
+O appendChild() faz essa inserção, tornando o elemento visível.
+
+Exemplo prático: Exibir imagem conforme a idade
+
+Neste exemplo, uma imagem será exibida com base na idade calculada.
+
+1. Estrutura do HTML
+
+<div id="resultado"></div>
+
+Este <div> será o local onde a imagem será inserida.
+
+2. Código JavaScript
+
+function exibirImagemPorIdade(idade) {
+    // Criar um elemento de imagem
+    const imagem = document.createElement("img");
+    imagem.width = 150; // Define o tamanho da imagem
+
+    // Definir a imagem conforme a idade
+    if (idade < 12) {
+        imagem.src = "crianca.png";
+        imagem.alt = "Criança";
+    } else if (idade < 18) {
+        imagem.src = "jovem.png";
+        imagem.alt = "Jovem";
+    } else if (idade < 60) {
+        imagem.src = "adulto.png";
+        imagem.alt = "Adulto";
+    } else {
+        imagem.src = "idoso.png";
+        imagem.alt = "Idoso";
+    }
+
+    // Adicionar a imagem ao elemento HTML
+    const divResultado = document.getElementById("resultado");
+    divResultado.innerHTML = ""; // Limpa a imagem anterior
+    divResultado.appendChild(imagem); // Adiciona a nova imagem
+}
+
+// Exemplo de uso:
+exibirImagemPorIdade(25); // Exibe a imagem de adulto
+
+Explicação do código:
+
+1. Criação da imagem: document.createElement("img") cria um novo elemento <img>.
+
+
+2. Definição da imagem correta: O src da imagem muda conforme a idade.
+
+
+3. Inserção no HTML:
+
+document.getElementById("resultado") seleciona o <div>.
+
+innerHTML = "" limpa qualquer imagem anterior.
+
+appendChild(imagem) adiciona a nova imagem ao <div>.
+
+
+
+-->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+         background-color: blue;
+         font-family: Arial, Helvetica, sans-serif;
+        }
+        h1{
+            color: white;
+            text-align: center;
+            font-weight: 800;
+        }
+        div{
+            margin: auto;
+            background-color: white;
+            width: 400px;
+            padding: 9px;
+        }
+        footer{
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Verificador de idade</h1>
+    </header>
+    <section>
+        <div>
+             <p>
+                ano de nascimento
+                <input type="number" name="txtano" id="txtano" >
+             </p>
+             <p>
+                sexo:
+                <input type="radio" name="radsex" id="masc" checked>
+                <label for="masc">Masculino</label>
+                <input type="radio" name="radsex" id="fem">
+                <label for="masc">Feminino</label>
+             </p>
+             <input type="button" value="Verificar" onclick="verificar()">
+        </div>
+        <div id="res">
+        preencha os dados acima para ver o resultado!
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Cursoemvideo</p>
+    </footer>
+
+
+    <script>
+        function verificar(){
+           var data = new Date()
+           var ano = data.getFullYear() //fullyear e o ano atual
+           var fano = document.getElementById("txtano")
+           var res = document.getElementById("res")
+
+           if (fano.value.length == 0 || fano.value > ano){ // se não digitou o ano ou for maior que o ano atual
+              window.alert('verifique os dados e tente novamnte!')
+           } else {
+              var fsex = document.getElementsByName('radsex')
+              var idade = ano - Number(fano.value)
+             var genero = ''
+             var img = document.createElement('img')
+             img.setAttribute ('id', 'foto')
+             img.style.width = ' 400px'
+             img.style.height = '460px'
+
+             if (fsex[0].checked){ // se oque estiver marcaado (checked masculino) for 0
+                 genero = 'Homem'
+              
+                 if (idade >=0 && idade <10){
+                    //criança
+                    img.setAttribute('src', 'foto-bebe-m.jpg')
+                 } else if (idade >= 10 && idade < 21) {
+                    //jovem
+                    img.setAttribute('src', 'foto-jovem-m.jpg')
+                 } else if (idade < 50){
+                    // adulto
+                    img.setAttribute('src', 'foto-adulto-m.jpg')
+                 } else {
+                    //idoso
+                    img.setAttribute('src', 'foto-idoso-m.jpg')
+                 }
+
+             
+                }    else if (fsex[1].checked) {
+                 genero = 'Mulher'
+
+                
+                 if (idade >=0 && idade <10){
+                    //criança
+                    img.setAttribute('src', 'foto-bebe-f.jpg')
+                 } else if (idade >= 10 && idade < 21) {
+                    //jovem
+                    img.setAttribute('src', 'foto-jovem-f.jpg')
+                 } else if (idade < 50){
+                    // adulto
+                    img.setAttribute('src', 'foto-adulto-f.jpg')
+                 } else {
+                    //idoso
+                    img.setAttribute('src', 'foto-idosa-f.jpg')
+                 }
+
+            }
+            res.style.textAlign = 'center'
+           res.innerHTML = `detectamos ${genero} com ${idade} anos.`
+           res.appendChild(img)
+              
+           } 
+        }
+    </script>
+</body>
+</html>

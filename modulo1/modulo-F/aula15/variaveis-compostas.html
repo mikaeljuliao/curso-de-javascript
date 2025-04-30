@@ -1,0 +1,267 @@
+<!--
+diferença entre variaveis simplis e variaveis compostas:
+- variaveis simplis: só conseguem armazenar um valor por vez.
+por exempl: se eu crio uma variavel N  e atribuo o valor 5, o valor da variave
+sera 5, e se depois eu clocar o valor 8, a variavel vai perder o 5
+
+-  variaveis ccompostas: devem ser capazes de armazenar vários
+ valores em uma mesma estrutura
+ por exemoplo: se eu coloco 5, ela guarda, se coloco 8, ela guuarda tambem e etc.
+ ela não perde os valores anteriores pra guardar novos valores
+
+
+
+
+
+O que são variáveis compostas?
+
+São variáveis que guardam vários valores dentro de uma só.
+
+Em vez de criar várias variáveis separadas tipo:
+
+let a = 1
+let b = 2
+let c = 3
+
+Você pode usar uma variável composta que guarda vários valores juntos.
+Em JavaScript, o tipo mais comum é o vetor (array).
+
+
+---
+
+1. Vetor (ou array)
+
+É tipo uma lista de coisas guardadas numa variável só.
+
+let num = [5, 8, 2, 9]
+
+Esse num agora tem 4 posições (ou "índices"):
+
+num[0] → 5
+
+num[1] → 8
+
+num[2] → 2
+
+num[3] → 9
+
+
+Você acessa os valores assim:
+
+console.log(num[1]) // Mostra 8
+
+
+
+
+
+
+Sintaxe básica de um array:
+
+let nome = [valor1, valor2, valor3]
+
+
+---
+
+Explicando cada parte:
+
+let ou const → declara a variável 
+
+nome → é o nome da variável (como “frutas”, “numeros”, etc.)
+
+= → operador de atribuição (serve pra dizer que o array será guardado nessa variável)
+
+[ ] → colchetes que criam o array
+
+valor1, valor2, valor3... → são os elementos do array, separados por vírgula
+
+
+> Cada elemento tem um índice, começando em 0.
+Ex: o primeiro valor está no índice 0, o segundo no 1, e assim por diante.
+
+Exemplo prático:
+
+let frutas = ["maçã", "banana", "uva"]
+"maçã" → elemento no índice 0
+"banana" → elemento no índice 1
+"uva" → elemento no índice 2
+
+
+como adicionar valores:
+
+acresento manualmente a variavel do array e o indice dentro 
+de colchetes e o valor que vai receber
+num[4] = 7
+
+exemplo:
+let num = [5, 8, 2, 9]
+num[4] = 7
+
+explicação: na segunda linha de codigo eu acresentei mais um
+elemento no indice 4 com o valor 7
+
+
+
+
+
+como acresentar valor de forma explicita:
+dessa forma eu não preciso indicar o indice, ele vai acresentar diretamente no final.
+para fazer isso eu uso o push.
+
+Usando .push():
+num.push(6) // Adiciona 6 no final
+
+sintaxe:
+acresento a variavel do array.push e dentro de () acresento o valor
+que irá ser acresentado no final
+
+exemplo:
+let num = [5, 8, 2, 9]
+num[4] = 7
+num.push(1)
+
+
+
+
+como saber o comprimento do array:
+pra saber o comprimento eu uso o atributo length
+
+sintaxe:
+coloco a variavel do array.length
+
+exemplo:
+console.log(num.length) // Mostra quantos elementos tem
+
+
+como ordenar os valores:
+usando o sort() eu ordeno todo os numeros do array de forma cresente
+
+sintaxe:
+uso a variavel do array.sort()
+
+exemplo:
+let num = [5, 8, 2, 9]
+num.sort()
+
+ira aparecer assim, 2, 5, 8, 9
+
+
+Como mostrar os elementos de um array sem os colchetes []:
+
+- Apenas um elemento:
+Pra mostrar só um elemento do array, uso o console.log() 
+e coloco dentro dos parênteses o nome da variável do array mais o 
+índice que eu quero ver.
+
+Exemplo:
+console.log(num[1])
+console.log(num[2])
+
+
+- Vários ou todos os elementos:
+Com apenas duas linhas eu consigo mostrar vários ou
+todos os elementos do array usando um for.
+
+1. Crio o for e, na inicialização, dou o nome da variável 
+(ex: pos), que vai começar com 0 — isso é pra começar desde o início do array.
+
+2. Na condição, eu uso a variável do for sendo menor que a variável do array com .length.
+Em outras palavras, estou dizendo que enquanto a variável criada no for for menor que o 
+comprimento do array, ele vai continuar rodando, e assim consigo pegar todos os elementos.
+
+3. E no incremento, coloco pos++ pra ele ir avançando uma posição por vez no array.
+
+4. Dentro do for, uso o console.log(num[pos]) pra exibir os valores.
+
+Exemplo:
+
+for (let pos = 0; pos < num.length; pos++) {
+    console.log(num[pos])
+}
+
+
+
+
+
+Forma mais simplificada de pegar os índices do array:
+
+Essa forma usa o for...in, que é mais simples e direto.
+Ele não tem os três elementos (inicialização, condição e incremento)
+como o for tradicional. É uma forma mais enxuta, 
+principalmente usada com variáveis compostas e objetos.
+
+Sintaxe:
+- Do lado esquerdo do in, coloco a variável que vai receber os índices do array.
+Do lado direito, coloco o nome da variável composta (no caso, o array).
+
+- Ou seja, podemos ler assim:
+“Para cada posição dentro de num”, 
+onde for é lido como "para", e in como "dentro de".
+
+- Dentro do bloco do for...in, uso console.log(num[pos]) 
+pra mostrar o valor que está naquela posição do array.
+
+Exemplo:
+
+for (let pos in num) {
+    console.log(num[pos])
+}
+
+
+Assim, ele vai percorrer cada posição do array e exibir os valores, 
+de forma mais direta do que o for tradicional.
+
+
+exemplos da forma simplificada e tradicional:
+
+//forma tradicional
+let num = [5, 8, 2, 9, 3]
+
+console.log(num)
+
+for (let pos = 0; pos < num.length; pos++){
+    console.log(`o numero da posição ${pos} tem o valor ${num[pos]}`)
+}
+    
+//forma simplificada
+let num = [5, 8, 2, 9, 3]
+num.sort()
+for (let pos in num){
+    console.log(`o numero da posição ${pos} tem o valor ${num[pos]}`)
+}
+
+
+
+Como buscar um valor em um array:
+Eu busco usando indexOf(7). Ele vai procurar, 
+dentro do array, onde está o valor 7.
+
+Exemplo:
+
+let num = [4, 5, 8, 7]
+// índices:  0  1  2  3
+
+num.indexOf(7)
+
+Isso vai retornar o índice onde está o valor 7, que no caso é 3.
+
+Explicação:
+Ao usar indexOf(7), o JavaScript vai procurar no array o valor 7.
+Se ele existir, o método retorna o índice onde esse valor está.
+Se não encontrar, ele retorna -1.
+
+-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
