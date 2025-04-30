@@ -1,0 +1,208 @@
+<!--
+metodo join():
+O método join() em JavaScript é usado para transformar os 
+elementos de um array em uma única string, usando um separador definido por você.
+Se não for passado nenhum separador, o padrão é a vírgula.
+
+Exemplo:
+["a", "b", "c"].join("-") // retorna "a-b-c"
+
+Serve, por exemplo, para mudar a vírgula por ponto, 
+espaço, traço ou qualquer outro caractere ao exibir os dados.
+
+metodo pop(), remover utimo item da matriz:
+o metodo pop() remove o utimo item da matriz
+ex:  const pessoa = ['dimitri', 'juliao', 20]
+pessoa.pop() // retorna "remove o 20"
+
+metodo push(), adicionar item na matriz:
+o metodo push() adiciona um item a matriz
+ex:  const pessoa = ['dimitri', 'juliao', 20]
+pessoa.push('estudante') // retorna por utimo "estudante"
+
+metodo shift() remover o primeiro item da matriz:
+o metodo shift() remove o primeiro item da matriz
+ex:  const pessoa = ['dimitri', 'juliao', 20]
+pessoa.shift() //  remove o 'dimitri' 
+
+mudançã com o  shift() :
+apos remover o primeiro item, todos os outros terão o indice alterado
+
+metodo unshift() adionar no primeito item da matriz:
+o metodo unshift() adicionar um item no primeiro valor da matriz, o "0"
+ex:  const pessoa = ['dimitri', 'juliao', 20]
+pessoa.shift('mikael') //  adiciona 'mikael' primeiro
+
+metodo delete[], outro metodo pra apagar um item:
+metodo delete[] tem um diferencial, eu posso deletar o item que eu quero 
+passando a posição dele, o indice, dentro de []. passo o metodo e depois o array com
+o indice dentro de []
+
+mudança com o metodo delete[]:
+quando ele é usado ele não muda a posição dos outros itens, ele remove
+e acesenta no lugar um 'underfined'
+
+ex:  const pessoa = ['dimitri', 'juliao', 20]
+delete pessoa[0] // dimitri é subistituido por 'underfined'
+
+metodo splice() adiciona mutiplos valores em determinada posicção:
+o metodo splice() adiciona mutiplos valores no array em uma determinada
+posição especificada
+
+sintaxe do metodo splice():
+uso o array.splice() e dentro de () eu passo em qual posicção o novo
+elemeto vai ser adicionado, depois coloco quantos elementos devem ser removidos
+da matriz, e passos os valores que quero adicionar, tudo isso separado por virgula
+
+ex:  const pessoa = ['dimitri', 'juliao', 20]
+   pessoa.splice(1, 0, 'natan', 'talita', 'elen')
+// ira retornar ['dimitri', 'natan', 'talita', 'elen', 20]
+ 
+metodo concat(), como juntar ou cancatenar matrizes:
+o metodo concat() concatena uma lista na outro
+
+sintaxe do metodo concat():
+uma forma é criando uma nova variavel pra guardar as listas concatenada,
+e fazer com que receba uma lista.o metodo e dentro de (), a lista que ira concatenar.
+se for mais de uma lista e so separar por virgula dentro de ( e especificar a lista)
+
+ex: const lista1 = ['arroz', 'feijão', 'leite', 'macarrão']
+        const lista2 = ['suco', 'refrigerante', 'carne']
+        const superLIsta = lista1.concat(lista2)
+   // a variavel superLista ira ter as duas listas concatenada
+   e ira retornar arroz, feijão, leite, macarrão, suco, refrigerante, carne
+
+
+metodo slice()como fatiar uma matriz:
+o metodo slice() faz com que a matriz comece em determinada posição da matriz
+
+sintaxe do metodo slice():
+crio uma nova variavel pra poder especificar a matriz que quero fatiar, appos criar a varivael, faço
+receber a matriz.slice() e dentro de () eu indico o imdoce de onde vai começar a matriz. e 
+pra fatiar so ate determinado item, o segundo valor dentro de () e pra especicar ate onde vai
+
+ex:   const jogadores = ['mikael' , 'mikael2', 'pelé', 'messi', 'natan1', 'natan2']
+       const craques = jogadores.slice(2,4)
+
+       document.getElementById('teste').innerHTML = craques
+// vai retornar apenas pelé e messi
+
+
+metodo sort() mostrar em ordem alfabetica:
+o metodo sort() mostra os valores do array em ordem alfabetica.
+para fazer isso e so usar o array.sort()
+
+ex: const jogadores = ['mikael' , 'mikael2', 'pelé', 'messi', 'natan1', 'natan2']
+       const jogOrdem = jogadores.sort()
+
+       document.getElementById('teste').innerHTML = jogOrdem
+// ira retornar messi, mikael1, mikael2,natanael1, natanel2, péle
+
+
+metodo reverse() como fazer a ordem alfabetica reverter:
+com o metodo reverse(), faz com que ele reverta  a ordem, pra fazer isso
+primeiro tenhi que fazer com que o array fica em ordem alfabetica pra depois reverter
+
+ex: const jogadores = ['mikael' , 'mikael2', 'pelé', 'messi', 'natan1', 'natan2']
+       const jogOrdem = jogadores.sort()
+       jogOrdem.reverse()
+
+       document.getElementById('teste').innerHTML = jogOrdem
+
+
+como colocar numeros em ordem com sort():     
+o metodo sort() é usado para ordenar os elementos de um array.
+para numeros é necessario passar uma função de comparação e sem essa função
+o sort ordena os nuemros como strings. ex: [1, 10, 2]
+
+exemplo de como é feito:
+const numeros = [40, 100, 1, 5, 25]
+numeros.sort(function (a,b) { return a - b})
+ document.getElementById('teste').innerHTML = numeros
+
+
+// e pra fazer de traz pra frente e só trocar o a - b por b- a
+
+
+
+
+Como pegar o maior número de um array em JavaScript:
+Para descobrir o maior número dentro de um array, usamos 
+a função Math.max. Ela não aceita um array diretamente, 
+então precisamos passar os números separados. Existem duas formas de fazer isso:
+
+
+---
+
+1. Forma Moderna – Usando o Spread Operator (...)
+Math.max(...array);
+
+O ... (chamado de operador de espalhamento) espalha os 
+elementos do array, transformando [1, 2, 3] em 1, 2, 3.
+É a forma mais moderna, legível e recomendada.
+
+
+Exemplo:
+const numeros = [40, 100, 1, 5, 25];
+const maior = Math.max(...numeros);
+console.log(maior); // 100
+
+2. Forma Antiga – Usando apply
+
+Math.max.apply(null, array);
+
+Aqui usamos .apply para fazer com que Math.max receba os 
+valores do array como se fossem argumentos separados.
+O null é usado porque Math.max não depende de contexto (this),
+então podemos passar qualquer valor.
+
+
+Exemplo:
+const numeros = [40, 100, 1, 5, 25];
+const maior = Math.max.apply(null, numeros);
+console.log(maior); // 100
+
+
+como pegar o menor numero:
+faço a mesma coisa do maior numero, mas inves do max, eu uso o min
+ex:
+const numeros = [40, 100, 1, 5, 25];
+const maior = Math.min(...numeros);
+console.log(maior); // 1
+
+ex:
+const numeros = [40, 100, 1, 5, 25];
+const maior = Math.min.apply(null, numeros);
+console.log(maior); // 1
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="teste">teste</h1>
+     <h2 id="text">tes</h2>
+
+    <script>
+       const jogadores = ['mikael' , 'mikael2', 'pelé', 'messi', 'natan1', 'natan2']
+       const jogOrdem = jogadores.sort()
+       jogOrdem.reverse()
+
+      const numeros = [40, 100, 1, 5, 25]
+
+
+       var dados= document.getElementById('teste')
+      
+       const maior = Math.max(...numeros);
+       dados.innerHTML = maior
+        
+       
+
+    </script>
+</body>
+</html>
