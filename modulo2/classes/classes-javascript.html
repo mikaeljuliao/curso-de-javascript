@@ -1,0 +1,82 @@
+<!--
+conteudo do cansal demitri:
+
+
+
+classes em javascript:
+
+em 2015 foi introduzido no javascript as classes. as classes são
+um conceito antigo em programação e varias limguagem utiliza elas.
+mas no javascript isso é relativamente novo, por isso mesmo programadores 
+experiente não sabem muito bem utilizar
+
+basicamente, as classes são como "fabricas" para criar objetos.
+pode se dizer que são "funções especiais" para criação de objetos.
+
+assim como uma fabrica da vida real precisa de maquinas para construir os 
+objetos, as classes no javascript usam um metodo chamado constructor()
+para fabricar os objetos
+
+sua sintaxe: 
+uso a palavra derivada para a criação de classe que se chama classe e
+em seguida dou o nome da classe e aabro e fecho {}, dentro de {}
+eu chamo oque vai construir essa fabrica que é o constructor() e abro e fecho {}
+dentro de () do  constructor passo os parametros de entradas e dentro de {}
+do  constructor eu passo as propriedades, para isso eu passo this.nome da propriedade =
+valor de entrada
+
+ex:
+ class carro{
+            constructor(valor1, valor2, valor3){
+                this.marca = valor1
+                this.modelo = valor2
+                this.ano = valor23
+            }
+// dessa forma eu criei uma fabrica de carro, onde eu so preciso passar o valor
+de marca, modelo e ano que terei qualquer carro
+
+como passar os valores de entrada:
+com a fabrica criada, eu crio uma variavel que vai receber new e a classe() e dentro de()
+eu passo os valores de entrada que não tinha especificado antes
+
+exemplo:
+class carro{
+            constructor(valor1, valor2, valor3){
+                this.marca = valor1
+                this.modelo = valor2
+                this.ano = valor3
+            }
+        }
+        let uno = new carro("fiat", "Uno", 2001)
+        // aqui eu criei o fiat uno de 2001 atraves da fabrica
+       let titulo =  document.getElementById('teste')
+       titulo.innerHTML = `Seu carro é ${uno.marca}  ${uno.modelo} do ano de ${uno.ano}`
+       // aqui imprimir na pagina com dom a marca, modelo e ano
+
+
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="teste">teste</h1>
+    <script>
+        class carro{
+            constructor(valor1, valor2, valor3){
+                this.marca = valor1
+                this.modelo = valor2
+                this.ano = valor3
+            }
+        }
+        let uno = new carro("fiat", "Uno", 2001)
+       let titulo =  document.getElementById('teste')
+       titulo.innerHTML = `Seu carro é ${uno.marca}  ${uno.modelo} do ano de ${uno.ano}`
+
+    </script>
+</body>
+</html>

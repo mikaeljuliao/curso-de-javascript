@@ -1,0 +1,164 @@
+<!--
+conteudo do cansal demitri:
+
+JSON siginifica javascript Object Notation que traduzindo
+pro portugues fica algo como notaçao de objetos javascript
+
+explicando de um  modo simplis JSON é basicamente uma forma de converter
+um objeto em texto e o contrario também, um texto em um objeto
+
+ele é usado principalmente para transmitir dados entre sistemas de forma simplis,
+já que o formato de texto é lido por praticamente toda liguagem de programação.
+
+para trabalhar com JSON no javascript usamos dois metodos:
+
+JSON.parse() -> comverte texto no padrão JSON em objetos
+JSON.stringify() -> comverte objetos em texto padrão JSON   
+
+como transformar objetos em string:
+para fazer isso basta criar uma variavel e colocar JSON.stringify() e dentro de () o objeto
+
+exemplo:
+  const carro = {
+            marca: 'fiat',
+            modelo: 'uno',
+            ano: 2001
+        }
+  let texto = JSON.stringify(carro)
+
+ document.getElementById('area').innerHTML = texto
+
+ //ele vai apresentar no site o objeto em forma de string
+
+ como tranformar texto no padrão JSON em objetos:
+ segue a mesma linha de raciocinio de antes, mas dessa vez é usando o 
+ JSON.parse() e eu posso pegar um objeto que foi transformado em string para
+ ser transformado em objeto de novo. vamos ao exemplo pegando o exemplo anterior:
+
+ exeemplo:
+ const carro = {
+            marca: 'fiat',
+            modelo: 'uno',
+            ano: 2001
+        }
+
+        let texto = JSON.stringify(carro)
+        document.getElementById('area').innerHTML = texto
+        // e aqui convertir novamente para objeto
+        let obj = JSON.parse(texto)
+        console.log(obj.modelo)
+        // imprimir no consle modelo do objeto 'uno'
+    
+
+ document.getElementById('area').innerHTML = texto
+
+
+
+ O método XMLHttpRequest()
+
+O método XMLHttpRequest() é usado no JavaScript para fazer requisições HTTP 
+(como GET, POST, etc.) diretamente do navegador. Ele permite acessar dados de um 
+site de forma remota, sem recarregar a página.
+
+Ele permite que você:
+Busque dados de um servidor (como uma API).
+Envie dados para o servidor.
+Atualize partes da página dinamicamente (sem dar refresh)
+
+Sintaxe básica:
+1. Crio uma variável que vai receber uma nova instância do método XMLHttpRequest()
+const xhr =  new XMLHttpRequest();
+
+2. Em seguida, uso a variavel.open() para configurar o tipo de requisição e o endereço:
+xhr.open("GET", "https://api.exemplo.com/dados", true);
+
+"GET": é o método que estou usando.
+"https://api.exemplo.com/dados": é o endereço da API.
+true: diz que a requisição será assíncrona (não trava a página).
+
+3. Depois, uso o .send() para enviar a requisição ao servidor:
+xhr.send();
+Se for uma requisição GET, uso send() sem nada dentro.
+Se for uma POST, posso passar dados dentro do send(), como:
+xhr.send("nome=Mikael&idade=25");
+
+
+Exemplo básico:
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "https://api.exemplo.com/dados", true);
+
+xhr.onload = function () {
+  if (xhr.status === 200) {
+    console.log(xhr.responseText);
+  }
+};
+
+xhr.send();
+
+
+Em resumo:
+
+XMLHttpRequest é uma forma "mais antiga" de fazer o que o fetch() faz hoje. Ele é parte do que chamamos de AJAX (Asynchronous JavaScript and XML).
+
+Quer que eu mostre a diferença entre XMLHttpRequest e fetch?
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+   #caixa {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 100px;
+    }
+
+    input, button {
+      margin: 5px;
+    }
+    </style>
+</head>
+<body>
+    <div id="caixa">
+    <input type="text" name="cep" id="cep" placeholder="Digite o seu CEP">
+    <button onclick="buscarCEP()">Buscar</button>
+     <p id="texto"></p>
+    </div>
+
+    <script>
+        function buscarCEP(){
+          let input = document.getElementById('cep').value
+ 
+          let ajax = new XMLHttpRequest()
+        ajax.open('get', 'https://viacep.com.br/ws/' + input + '/json/')
+        ajax.send()
+
+        ajax.onload = function(){
+          
+          // esse responseText e a resposta de texto que ta vindo do site
+          
+
+        // mostrando de forma mais ajeitada e so algunas coisas com uma converção
+        // comversao do texto para objeto
+        let obj =JSON.parse(this.responseText)  
+        // peguei os valores que eu queria do objeto
+        let  logradouro = obj.logradouro
+        let cidade = obj.localidade
+        let estado = obj.uf
+
+        document.getElementById('texto').innerHTML = " logradouro" + logradouro +
+        "<br> Cidade:"+ cidade + "<br> Estado:" + estado
+        
+        }
+        }
+
+      
+           
+    </script>
+</body>
+</html>
