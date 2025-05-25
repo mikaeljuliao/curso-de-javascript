@@ -1,0 +1,126 @@
+<!--
+   METODOS MAIS USADOS NO JAVASCRIPT:
+   aqui eu tinha muitas duvidas sibre os metodos e os mais usados.
+   todos os metodos aqui são os mais usados e não todos que existe!
+
+
+
+1. O que é um método em JavaScript?
+
+Método é uma função que pertence a um objeto.
+
+Quando você vê algo como array.push() ou texto.toUpperCase(), o que está antes do ponto 
+(array, texto) é um objeto, e o que está depois do ponto (push(), toUpperCase()) é o método que pode ser usado nesse objeto.
+
+Resumindo:
+objeto.metodo()
+
+
+---
+
+2. Lista dos métodos mais usados em JavaScript 
+(com explicação simples)
+
+Organizei por tipos de dados pra facilitar:
+
+
+---
+
+A. Métodos de Array (listas)
+
+let frutas = ['maçã', 'banana', 'uva'];
+
+Método	O que faz:
+
+.push()	Adiciona item no final
+.pop()	Remove o último item
+.shift()	Remove o primeiro item
+.unshift()	Adiciona item no começo
+.length	   Mostra quantos itens tem (não usa parênteses)
+.includes()	Verifica se algo está no array
+.indexOf()	Mostra o índice de um item
+.join()	  Junta tudo em uma string
+.slice()	Copia parte do array
+.splice()	Remove ou troca itens
+.forEach()	Roda uma função para cada item
+.map()	Cria um novo array modificando os valores
+.filter()	Cria novo array com base em uma condição
+.find()	  Encontra o primeiro item que atende uma condição
+.reduce()	Reduz tudo a um único valor (ex: somar tudo)
+
+
+
+---
+
+B. Métodos de String (texto)
+
+let nome = "Mikael";
+
+Método	O que faz
+
+.length	Mostra o tamanho da string
+.toUpperCase()	Deixa tudo maiúsculo
+.toLowerCase()	Deixa tudo minúsculo
+.includes()	Verifica se contém algo
+.indexOf()	Mostra onde começa uma palavra/letra
+.replace()	Troca um pedaço do texto
+.slice()	Corta parte da string
+.substring()	Parecido com slice
+.trim()	Remove espaços do início/fim
+.split()	Quebra a string em partes (vira array)
+.startsWith()	Verifica se começa com algo
+.endsWith()	Verifica se termina com algo
+
+
+
+---
+
+C. Métodos de Number
+
+let numero = 10.54321;
+
+Método	O que faz
+
+.toFixed()	Arredonda e mostra casas decimais
+.toString()	Transforma número em texto
+.parseInt()	Converte texto para número inteiro
+.parseFloat()	Converte texto para número com vírgula
+
+
+
+---
+
+D. Métodos de Objetos
+
+let user = { nome: "Mikael", idade: 25 };
+
+Método	O que faz
+
+Object.keys()	Mostra todas as chaves
+Object.values()	Mostra todos os valores
+Object.entries()	Mostra tudo em pares chave/valor
+Object.assign()	Junta objetos
+JSON.stringify()	Converte objeto para texto (JSON)
+JSON.parse()	Converte texto para objeto
+
+
+
+---
+
+E. Métodos do DOM (HTML/inputs/etc.)
+
+let input = document.querySelector("input");
+
+Método	O que faz
+
+.value	Pega o valor digitado no input
+.focus()	Coloca o cursor dentro do input
+.classList.add()	Adiciona uma classe CSS
+.classList.remove()	Remove uma classe CSS
+.classList.toggle()	Adiciona ou remove uma classe
+.setAttribute()	Define um atributo HTML
+.getAttribute()	Lê um atributo HTML
+.appendChild()	Adiciona um elemento HTML
+.remove()	Remove um elemento
+
+-->
